@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/view/HomePage.dart';
-import 'package:flutter_app/view/Login.dart';
+import 'package:flutter_app/page/HomePage.dart';
+import 'package:flutter_app/page/Join.dart';
+import 'package:flutter_app/page/Login.dart';
+import 'package:flutter_app/provider/FirebaseProvider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,7 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [],
+      providers: [
+        ChangeNotifierProvider<FirebaseProvider>(
+            create: (_) => FirebaseProvider()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -23,6 +28,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => LandingPage(),
           '/login': (context) => LoginPage(),
+          '/join': (context) => JoinPage(),
         },
       ),
     );
